@@ -1,0 +1,163 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Open Sans font with the proper format */
+/* Import Avenir Next if available via CDN, or use system fallbacks */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 160 100% 41%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 212 65% 17%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 160 100% 41%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 212 65% 27%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 214.3 59.4% 15.3%;
+    --sidebar-ring: 160 100% 41%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-open-sans text-[15px] font-normal;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  button, a {
+    @apply transition-all duration-200;
+  }
+
+  /* Rest of the existing styles */
+  .credit-card-dots {
+    @apply flex gap-1;
+  }
+  
+  .credit-card-dots span {
+    @apply inline-block w-2 h-2 bg-white rounded-full;
+  }
+
+  .card-indicator {
+    @apply inline-block w-2 h-2 rounded-full mx-1 transition-all duration-300;
+  }
+
+  .card-indicator.active {
+    @apply bg-aspire-green;
+  }
+
+  .card-indicator.inactive {
+    @apply bg-gray-300;
+  }
+  
+  .transaction-icon {
+    @apply flex items-center justify-center w-10 h-10 rounded-full;
+  }
+  
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Font weight utility classes */
+  .font-open-sans-light {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-open-sans-regular {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+  }
+  
+  .font-open-sans-medium {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+  }
+  
+  .font-open-sans-semibold {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+  }
+  
+  .font-open-sans-bold {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+  }
+  
+  .font-open-sans-extrabold {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+  }
+}
+
+/* src/styles/tabs.css (already imported somewhere in your project) */
+@layer components {
+  .tab-trigger {
+    /* base (inactive) styles */
+    @apply px-0 pb-1 text-[14px] font-open-sans font-normal whitespace-nowrap opacity-30 hover:opacity-60 transition-opacity;
+
+    /* active state */
+    @apply data-[state=active]:opacity-100
+           data-[state=active]:text-aspire-tabsActiveColor
+           data-[state=active]:border-b-2
+           data-[state=active]:border-aspire-blueBorder
+           data-[state=active]:bg-transparent
+           data-[state=active]:shadow-none;
+  }
+}
+
+/* Animation consistency for accordions */
+.accordion-animation {
+  transition-property: height, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

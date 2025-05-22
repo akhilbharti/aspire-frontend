@@ -1,0 +1,150 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .credit-card-dots {
+    @apply flex space-x-1.5 items-center;
+  }
+
+  .credit-card-dots span {
+    @apply w-1.5 h-1.5 bg-white rounded-full;
+  }
+
+  /* Enhanced card indicator animation */
+  .card-indicator {
+    @apply inline-block w-2 h-2 rounded-full mx-1.5 cursor-pointer transition-all duration-300;
+  }
+
+  .card-indicator.active {
+    @apply bg-aspire-green w-5 h-2 rounded-sm transform scale-100;
+    animation: dot-to-bar 300ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .card-indicator.inactive {
+    @apply bg-gray-300 w-2 h-2 rounded-full transform scale-100;
+    animation: bar-to-dot 300ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  @keyframes dot-to-bar {
+    0% {
+      width: 8px;
+      border-radius: 9999px;
+    }
+    50% {
+      border-radius: 4px;
+    }
+    100% {
+      width: 20px;
+      border-radius: 4px;
+    }
+  }
+
+  @keyframes bar-to-dot {
+    0% {
+      width: 20px;
+      border-radius: 4px;
+    }
+    50% {
+      border-radius: 4px;
+    }
+    100% {
+      width: 8px;
+      border-radius: 9999px;
+    }
+  }
+
+  .transaction-icon {
+    @apply rounded-full flex items-center justify-center transition-transform duration-300;
+  }
+  
+  /* Enhanced animations for accordion */
+  [data-state="open"] .accordion-content-animation {
+    animation: slide-down 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  [data-state="closed"] .accordion-content-animation {
+    animation: slide-up 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @keyframes slide-down {
+    from {
+      height: 0;
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      height: 0;
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  /* Card Scale Animation */
+  .card-scale-enter {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  
+  .card-scale-enter-active {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .card-scale-exit {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .card-scale-exit-active {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  /* Mobile bottom nav specific styles */
+  .bottom-nav-icon {
+    @apply w-6 h-6 mb-1;
+  }
+  
+  .bottom-nav-label {
+    @apply text-xs font-medium;
+  }
+  
+  /* Mobile-specific card styles */
+  @media (max-width: 640px) {
+    .card-container {
+      @apply w-full max-w-none px-0;
+    }
+    
+    .card-controls-container {
+      @apply overflow-x-auto pb-4 flex-nowrap hide-scrollbar;
+    }
+  }
+}
