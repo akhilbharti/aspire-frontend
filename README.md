@@ -147,21 +147,21 @@ Tests are written using Vitest and React Testing Library, focusing on both compo
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone [aspire-frontend](https://github.com/akhilbharti/aspire-frontend.git)
 
 # Navigate to the project directory
-cd aspire-dashboard
+cd aspire-frontend
 
 # Install dependencies
-npm install
+yarn install
 
 # Start the development server
-npm run dev
+yarn run dev
 ```
 
 ## Usage
 
-After starting the development server, open your browser to http://localhost:5173 to see the application.
+After starting the development server, open your browser to http://localhost:8080 to see the application.
 
 ### Key User Flows
 
